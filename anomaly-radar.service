@@ -1,0 +1,15 @@
+[Unit]
+Description=Anomaly Radar (Binance USDT-M perp anomaly detector)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/anomaly-radar
+EnvironmentFile=/opt/anomaly-radar/radar.env
+ExecStart=/opt/anomaly-radar/.venv/bin/python /opt/anomaly-radar/radar.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
